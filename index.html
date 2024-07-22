@@ -1,27 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
-	<title></title>
-	<meta name="generator" content="LibreOffice 7.3.7.2 (Linux)"/>
-	<meta name="created" content="00:00:00"/>
-	<meta name="changed" content="00:00:00"/>
-	<style type="text/css">
-		@page { size: 8.27in 11.69in; margin: 0.79in }
-		p { line-height: 115%; margin-bottom: 0.1in; background: transparent }
-		pre { background: transparent }
-		pre.western { font-family: "Liberation Mono", monospace; font-size: 10pt }
-		pre.cjk { font-family: "NSimSun", monospace; font-size: 10pt }
-		pre.ctl { font-family: "Liberation Mono", monospace; font-size: 10pt }
-	</style>
-</head>
-<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre class="western">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;pt-BR&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Servidor Modded Among Us&lt;/title&gt;
-    &lt;style&gt;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecionando para Servidor Modded Among Us</title>
+    <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -42,31 +25,27 @@
         h1 {
             margin-top: 0;
         }
-        a {
-            color: #1e90ff;
-            text-decoration: none;
-            word-break: break-all;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div class=&quot;container&quot;&gt;
-        &lt;h1&gt;Servidor Modded Among Us&lt;/h1&gt;
-        &lt;p&gt;Voc&ecirc; ser&aacute; redirecionado automaticamente para o servidor modded do Among Us. Se n&atilde;o for redirecionado, clique no link abaixo:&lt;/p&gt;
-        &lt;a id=&quot;amongusLink&quot; href=&quot;amongus://init?servername=Tomix_Modded&amp;serverport=443&amp;serverip=https%3A%2F%2Faumods.us&amp;usedtls=false&quot;&gt;
-            amongus://init?servername=Tomix_Modded&amp;serverport=443&amp;serverip=https%3A%2F%2Faumods.us&amp;usedtls=false
-        &lt;/a&gt;
-    &lt;/div&gt;
-    &lt;script&gt;
-        document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
-            var link = document.getElementById(&quot;amongusLink&quot;);
-            window.location.href = link.href;
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Tenta abrir o URL via iframe
+            var iframe = document.createElement("iframe");
+            iframe.style.display = "none";
+            iframe.src = "amongus://init?servername=Tomix_Modded&serverport=443&serverip=https%3A%2F%2Faumods.us&usedtls=false";
+            document.body.appendChild(iframe);
+
+            // Se falhar, mostra o link para o usuário clicar
+            setTimeout(function() {
+                var link = document.getElementById("redirectLink");
+                link.style.display = "block";
+            }, 2000); // 2 segundos para tentar o redirecionamento
         });
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</pre>
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Redirecionando...</h1>
+        <p id="manualRedirect" style="display: none;">Se você não for redirecionado automaticamente, <a id="redirectLink" href="amongus://init?servername=Tomix_Modded&serverport=443&serverip=https%3A%2F%2Faumods.us&usedtls=false">clique aqui</a>.</p>
+    </div>
 </body>
 </html>
