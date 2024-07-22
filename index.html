@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecionando para Servidor Modded Among Us</title>
+    <title>Conectar ao Servidor Modded Among Us</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,7 +21,7 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
+            max-width: 600px;
             margin: 20px;
         }
         h1 {
@@ -34,31 +34,39 @@
         a:hover {
             text-decoration: underline;
         }
-        #mobileLink {
-            display: none;
-        }
-        #pcMessage {
+        #mobileLink, #pcInstructions, #macMessage {
             display: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Redirecionando...</h1>
+        <h1>Conectar ao Servidor Modded Among Us</h1>
         <p id="mobileLink">Se você estiver em um dispositivo móvel, <a href="amongus://init?servername=Tomix_Modded&serverport=443&serverip=https%3A%2F%2Faumods.us&usedtls=false">clique aqui</a> para se conectar ao servidor.</p>
-        <p id="pcMessage">Se você estiver em um PC, por favor, use o aplicativo Among Us para se conectar ao servidor modded.</p>
+        <div id="pcInstructions">
+            <p>Para usuários de PC, siga estas instruções:</p>
+            <ol>
+                <li><a href="https://www.mediafire.com/file/u4wmcvj3fkju3w5/regioninfo.json/file" target="_blank">Faça o download do arquivo <strong>regioninfo.json</strong> aqui.</a></li>
+                <li>Aperte <strong>Windows + R</strong> e cole o seguinte caminho: <code>%userprofile%\AppData\LocalLow\Innersloth\Among Us</code></li>
+                <li>Cole o arquivo transferido nessa pasta.</li>
+                <li>Abra o Among Us.</li>
+            </ol>
+        </div>
+        <p id="macMessage">Lamentamos, mas no Mac é impossível baixar e usar arquivos de região modded para Among Us. Sugerimos usar um PC para esta tarefa.</p>
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 var isMobile = /Mobi|Android/i.test(navigator.userAgent);
+                var isMac = /Macintosh/i.test(navigator.userAgent);
 
-                if (isMobile) {
-                    // Exibe o link para dispositivos móveis
+                if (isMac) {
+                    var macMessage = document.getElementById("macMessage");
+                    macMessage.style.display = "block";
+                } else if (isMobile) {
                     var mobileLink = document.getElementById("mobileLink");
                     mobileLink.style.display = "block";
                 } else {
-                    // Exibe uma mensagem para PCs
-                    var pcMessage = document.getElementById("pcMessage");
-                    pcMessage.style.display = "block";
+                    var pcInstructions = document.getElementById("pcInstructions");
+                    pcInstructions.style.display = "block";
                 }
             });
         </script>
