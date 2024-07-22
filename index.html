@@ -36,34 +36,34 @@
             display: none;
         }
     </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var isMobile = /Mobi|Android/i.test(navigator.userAgent);
-
-            // Para dispositivos móveis, exibe o link manual
-            if (isMobile) {
-                var link = document.getElementById("redirectLink");
-                link.style.display = "block";
-            } else {
-                // Para desktops, tenta abrir o URL via iframe
-                var iframe = document.createElement("iframe");
-                iframe.style.display = "none";
-                iframe.src = "amongus://init?servername=Tomix_Modded&serverport=443&serverip=https%3A%2F%2Faumods.us&usedtls=false";
-                document.body.appendChild(iframe);
-
-                // Se falhar, mostra o link para o usuário clicar
-                setTimeout(function() {
-                    var link = document.getElementById("redirectLink");
-                    link.style.display = "block";
-                }, 2000); // 2 segundos para tentar o redirecionamento
-            }
-        });
-    </script>
 </head>
 <body>
     <div class="container">
         <h1>Redirecionando...</h1>
-        <p id="manualRedirect">Se você não for redirecionado automaticamente, <a id="redirectLink" href="amongus://init?servername=Tomix_Modded&serverport=443&serverip=https%3A%2F%2Faumods.us&usedtls=false">clique aqui</a>.</p>
+        <p id="manualRedirect">Se você não for redirecionado automaticamente, <a id="redirectLink" href="amongus://init?servername=Tomix_Modded&serverport=443&serverip=https%3A%2F%2Faumods.us&usedtls=false">clique aqui</a> para se conectar ao servidor.</p>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
+                if (!isMobile) {
+                    // Para desktops, tenta abrir o URL via iframe
+                    var iframe = document.createElement("iframe");
+                    iframe.style.display = "none";
+                    iframe.src = "amongus://init?servername=Tomix_Modded&serverport=443&serverip=https%3A%2F%2Faumods.us&usedtls=false";
+                    document.body.appendChild(iframe);
+
+                    // Se falhar, mostra o link para o usuário clicar
+                    setTimeout(function() {
+                        var link = document.getElementById("redirectLink");
+                        link.style.display = "block";
+                    }, 2000); // 2 segundos para tentar o redirecionamento
+                } else {
+                    // Para dispositivos móveis, exibe o link manualmente
+                    var link = document.getElementById("redirectLink");
+                    link.style.display = "block";
+                }
+            });
+        </script>
     </div>
 </body>
 </html>
