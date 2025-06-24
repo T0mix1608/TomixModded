@@ -1,5 +1,5 @@
 {
-    "CurrentRegionIdx": 0,
+    "CurrentRegionIdx": 1,
     "Regions": [
         {
             "$type": "StaticHttpRegionInfo, Assembly-CSharp",
@@ -18,7 +18,7 @@
             "TargetServer": null,
             "TranslateName": 289
         },
-       {
+        {
             "$type": "StaticHttpRegionInfo, Assembly-CSharp",
             "Name": "Europe",
             "PingServer": "matchmaker-eu.among.us",
@@ -69,3 +69,5 @@
             "TargetServer": null,
             "TranslateName": 1003
         }
+    ]
+}
